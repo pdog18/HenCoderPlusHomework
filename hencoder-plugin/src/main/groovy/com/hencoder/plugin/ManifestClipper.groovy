@@ -1,10 +1,9 @@
 package com.hencoder.plugin
 
-import groovy.xml.QName
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class ManifestMender implements Plugin<Project> {
+class ManifestClipper implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
@@ -12,15 +11,13 @@ class ManifestMender implements Plugin<Project> {
         android.applicationVariants.all { variant ->
             variant.outputs.all { output ->
                 output.processManifest.doLast {
-                    // Stores the path to the maifest.
                     String manifestPath = "$manifestOutputDirectory/AndroidManifest.xml"
-                    // Stores the contents of the manifest.
-                    updateManifest(new File(manifestPath))
+
                 }
             }
         }
     }
-
+/*
     private static void updateManifest(File androidManifestFile) {
         def fileReader = new FileReader(androidManifestFile)
         def androidManifestXmlNode = new XmlParser().parse(fileReader)
@@ -41,5 +38,5 @@ class ManifestMender implements Plugin<Project> {
                 it.attributes()[attributeKey] = value
             }
         }
-    }
+    }*/
 }
