@@ -1,0 +1,27 @@
+apply plugin: 'maven'
+apply plugin: 'groovy'
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:3.2.1'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+
+
+// 把 plugin 上传到本地仓库 ../repo
+group = 'com.hencoder.plugin'
+version = '0.0.1'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}
