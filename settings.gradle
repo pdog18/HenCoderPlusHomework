@@ -1,1 +1,1 @@
-include ':app', ':library_1', ':library_2', ':hencoder-plugin'
+include ':app', ':library-1', ':library-2', ':hencoder-plugin'
