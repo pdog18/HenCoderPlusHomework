@@ -8,7 +8,7 @@
 
 * 通过 `rootProject` 的 `subprojects` 属性，写一个可以根据子项目名称选择依赖的方法。
 
-* 可以直接写在`build.gradle` 中也可以写在`buildSrc` 中。（不需要考虑子项目的子项目）
+* 可以直接写在`build.gradle`。（不需要考虑子项目的子项目）
 
 
 
