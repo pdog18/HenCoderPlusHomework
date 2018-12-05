@@ -1,0 +1,18 @@
+// 这里的 this 就是 [:app]
+this.afterEvaluate {
+    mergeLibrary()
+}
+
+void mergeLibrary() {
+    this.rootProject.subprojects.each { project ->
+        if (project.project == this.project) {
+            println(">>> skip, app")
+        } else if (project.name == "hencoder-plugin") {
+            println(">>> skip, hencoder-plugin")
+        } else {
+            println(">>> merge,  ${project.name}")
+
+            this.dependencies.implementation project.project
+        }
+    }
+}

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
+apply from: 'merge-library.gradle'
+apply plugin: 'hencoder-module-mainfest-clippers'
 apply plugin: 'hencoder-mainfest-mender'
-
 
 android {
     compileSdkVersion 28
@@ -21,25 +22,9 @@ android {
 }
 
 dependencies {
-    merge(this)
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-}
-
-def merge(target) {
-    rootProject.subprojects.each {
-        if (it == target.project) {
-            println(">>> skip, app")
-        } else if (it.name == "hencoder-plugin") {
-            println(">>> skip, 21_gradle_plugin")
-        } else {
-            println(">>> merge,  ${it.name}")
-
-            target.dependencies.implementation it.project
-        }
-    }
 }
