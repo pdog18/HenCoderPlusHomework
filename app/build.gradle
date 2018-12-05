@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'hencoder-module-mainfest-clippers'
 apply plugin: 'hencoder-mainfest-mender'
 
 
