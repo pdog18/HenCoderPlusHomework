@@ -1,5 +1,4 @@
-apply plugin: 'com.android.library'
-//apply plugin: 'com.android.application'
+apply from: new File(rootDir, 'android-application-or-library.gradle')
 
 android {
     compileSdkVersion 28
@@ -9,8 +8,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-//        applicationId "com.pdog.hencoder.plus.homework.library1"
-
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

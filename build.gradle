@@ -17,6 +17,10 @@ buildscript {
     }
 }
 
+ext {
+    need_merge = 'hello world'
+}
+
 allprojects {
     repositories {
         google()

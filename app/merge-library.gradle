@@ -2,17 +2,24 @@
 this.afterEvaluate {
     mergeLibrary()
 }
-
-void mergeLibrary() {
+static def sayHello(){
+    println("hello world!")
+}
+/**
+ * subProject 中的 [gradle.properties] 中声明了 {application=true}, 那么该project 不会被依赖进项目(:app)中
+ * 如果rootProject 下的其他目录没有被手动依赖也没有声明{application=false}的，都不会被依赖进项目
+ */
+def mergeLibrary() {
     this.rootProject.subprojects.each { project ->
-        if (project.project == this.project) {
-            println(">>> skip, app")
-        } else if (project.name == "hencoder-plugin") {
-            println(">>> skip, hencoder-plugin")
-        } else {
-            println(">>> merge,  ${project.name}")
-
-            this.dependencies.implementation project.project
+        try {
+            if (!project.property('application').toBoolean()) {
+                println(">>> merge,  ${project.name}")
+                this.dependencies.implementation project.project
+            } else {
+                println(">>> skip, ${project.name}")
+            }
+        } catch (ignored) {
+            println(">>> miss, ${project.name}")
         }
     }
 }

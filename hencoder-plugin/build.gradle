@@ -13,7 +13,6 @@ repositories {
 }
 
 
-
 // 把 plugin 上传到本地仓库 ../repo
 group = 'com.hencoder.plugin'
 version = '0.0.1'

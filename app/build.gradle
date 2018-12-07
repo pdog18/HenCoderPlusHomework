@@ -1,12 +1,13 @@
-apply plugin: 'com.android.application'
-apply from: 'merge-library.gradle'
+apply from: new File(rootDir, 'android-application-or-library.gradle')
+apply from: './merge-library.gradle'
+
 apply plugin: 'hencoder-module-mainfest-clippers'
 apply plugin: 'hencoder-mainfest-mender'
-
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.pdog.hencoder.plus.homework"
+        setApplicationId("com.pdog.hencoder.plus.app")
+
         minSdkVersion 14
         targetSdkVersion 28
         versionCode 1
